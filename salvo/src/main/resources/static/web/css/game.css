@@ -1,0 +1,44 @@
+.ship-piece{
+    background-color: darks lateblue;
+}
+
+.ship-piece-hited{
+    background-color: rgb(165, 151, 165);
+}
+
+.salvo{
+    background-color: crimson;
+}
+
+section{
+  width: 40%;
+  margin-left: 7%;
+}
+
+#tabla1{
+  display:inline-block;
+}
+
+#tabla2{
+  display:inline-block;
+}
+
+
+#player1Info, #player2Info{
+  font-style: Arial 1em;
+  margin-left: 35%;
+}
+
+h2, #player1Info, #player2Info{
+  color:white;
+  text-shadow:
+  -0.1em -0.1em 0 #000,
+  0.1em -0.1em 0 #000,
+  -0.1em 0.1em 0 #000,
+  0.1em 0.1em 0 #000;
+}
+
+body{
+  background-image: url("background-img-salvo.jpg");
+  background-size: cover;
+}

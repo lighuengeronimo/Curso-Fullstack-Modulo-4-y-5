@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Salvo! Games</title>
+  <link rel="stylesheet" type="text/css" href="style/game.css">
+</head>
+
+<body>
+  <div class ="container" id="app">
+
+    <img src="style/Battleship_2.png" alt="battleshipLogo" >
+
+    <form v-if="vueGames.player==='null'" id="login-form" >
+      <div>
+        <label> User Name : <input type="text" name="username" id="userName" required> </label>
+        <label> Password: <input type="password" name="password" id="password" required> </label>
+        <button  type= "button" onclick="logIn()">Log In</button>
+        <button   type= "button" onclick="signUp()">Sign Up</button>
+      </div>
+    </form>
+
+    <form v-else id="logout-form" >
+
+      <h1>Welcome {{ vueGames.player.name }}</h1>
+      <button type= "button" onclick="logOut()">Log out</button>
+      <br>
+
+    </form>
+
+    <h2>Games Table</h2>
+    <button  type= "button" v-show="vueGames.player!='null'" onclick="createGame()">Create Game</button>
+    <table class="table table-bordered table-dark">
+      <thead>
+    <tr>
+      <th >Game</th>
+      <th >Creation Date</th>
+      <th >Player 1</th>
+      <th >Player 2</th>
+      <th v-show="vueGames.player != 'null'">Join</th>
+    </tr>
+    </thead>
+
+    <tbody>
+      <tr  v-for="game in vueGames.games">
+        <td >{{game.id}}</td>
+        <td >{{game.created}}</td>
+        <td >{{game.players[0].name}}</td>
+
+        <td >{{ game.players[1] ?  game.players[1].name : "Waiting for player 2" }}</td>
+        <td v-show="vueGames.player != 'null'">
+
+          <div v-if ="game.players[1]!=null">
+
+            <div v-if="vueGames.player.id === game.players[0].id">
+              <button type="button" class="button" v-on:click="returnToGame(game.players[0].gpid)"> Return to game </button>
+            </div>
+
+            <div v-else-if="vueGames.player.id === game.players[1].id">
+              <button type="button" class="button" v-on:click="returnToGame(game.players[1].gpid)"> Return to game </button>
+            </div>
+
+            <div v-else>Game full</div>
+
+          </div>
+
+          <div v-else>
+            <button type="button" class="button" v-on:click="joinGame(game.id)"> Join Game</button>
+          </div>
+        </td>
+      </tr>
+
+
+
+      </tbody>
+
+    </table>
+
+    <h2  class="text-center" id="title">Leaderboards</h2>
+    <table class="table table-bordered table-dark">
+      <thead>
+        <tr>
+          <th >Player</th>
+          <th >Victories</th>
+          <th >Defeats</th>
+          <th >Ties</th>
+          <th >Total Score</th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr v-for="player in vueScores">
+            <td >{{player.player}}</td>
+            <td >{{player.victories}}</td>
+            <td >{{player.defeats}}</td>
+            <td >{{player.ties}}</td>
+            <td >{{player.total_score}}</td>
+          </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" Vue.config.devtools = true
+  ></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="leaderboards.js"></script>
+</body>
+
+</html>
