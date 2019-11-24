@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Salvo! Games</title>
+</head>
+
+<body>
+  <div class ="container" id="app">
+    <h2>Games Table</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th >Game ID</th>
+          <th >Creation Date</th>
+          <th >GamePlayers ID</th>
+          <th >Player ID</th>
+          <th >Player Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <template v-for="game in vueGames.games">
+          <tr>
+            <td  rowspan ="2">{{game.id}}</td>
+            <td  rowspan ="2">{{game.created}}</td>
+            <td >{{game.gamePlayers[0].id}}</td>
+            <td >{{game.gamePlayers[0].player.id}}</td>
+            <td >{{game.gamePlayers[0].player.name}}</td>
+          
+          </tr>
+          <tr v-if="game.gamePlayers.length>1">
+              
+              <td  >{{game.gamePlayers[1].id}}</td>
+              <td >{{game.gamePlayers[1].player.id}}</td>
+              <td >{{game.gamePlayers[1].player.name}}</td>
+            </tr>
+              
+            <tr v-else >
+              <td >N/A</td>
+              <td >N/A</td>
+              <td >N/A</td>
+            </tr>
+        </template>
+        
+      </tbody>
+
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" Vue.config.devtools = true
+  ></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="games.js"></script>
+</body>
+
+</html>

@@ -83,31 +83,31 @@ public class SalvoApplication extends SpringBootServletInitializer {
 
 			Ship ship1 =new Ship("Destroyer", Arrays.asList("H2", "H3", "H4"), gamePlayer1);
 			Ship ship2 =new Ship("Submarine", Arrays.asList("E1", "F1", "G1"),gamePlayer1);
-			Ship ship3 =new Ship("Patrol Boat", Arrays.asList("B4", "B5"),gamePlayer1);
+			Ship ship3 =new Ship("Patrol_Boat", Arrays.asList("B4", "B5"),gamePlayer1);
 			Ship ship4 =new Ship("Destroyer", Arrays.asList("B5", "C5", "D5"),gamePlayer2);
-			Ship ship5 =new Ship("Patrol Boat", Arrays.asList("F1", "F2"),gamePlayer2);
+			Ship ship5 =new Ship("Patrol_Boat", Arrays.asList("F1", "F2"),gamePlayer2);
 			Ship ship6 =new Ship("Destroyer", Arrays.asList("B5", "C5", "D5"),gamePlayer3);
-			Ship ship7 =new Ship("Patrol Boat", Arrays.asList("C6", "C7"),gamePlayer3);
+			Ship ship7 =new Ship("Patrol_Boat", Arrays.asList("C6", "C7"),gamePlayer3);
 			Ship ship8 =new Ship("Submarine", Arrays.asList("A2", "A3", "A4"),gamePlayer4);
-			Ship ship9 =new Ship("Patrol Boat", Arrays.asList("G6", "H6"),gamePlayer4);
+			Ship ship9 =new Ship("Patrol_Boat", Arrays.asList("G6", "H6"),gamePlayer4);
 			Ship ship10 =new Ship("Destroyer", Arrays.asList("B5", "C5", "D5"),gamePlayer5);
-			Ship ship11 =new Ship("Patrol Boat", Arrays.asList("C6", "C7"),gamePlayer5);
+			Ship ship11 =new Ship("Patrol_Boat", Arrays.asList("C6", "C7"),gamePlayer5);
 			Ship ship12 =new Ship("Submarine", Arrays.asList("A2", "A3", "A4"), gamePlayer6);
-			Ship ship13 =new Ship("Patrol Boat", Arrays.asList("G6", "H6"), gamePlayer6);
+			Ship ship13 =new Ship("Patrol_Boat", Arrays.asList("G6", "H6"), gamePlayer6);
 			Ship ship14 =new Ship("Destroyer", Arrays.asList("B5", "C5", "D5"), gamePlayer7);
-			Ship ship15 =new Ship("Patrol Boat", Arrays.asList("C6", "C7"), gamePlayer7);
+			Ship ship15 =new Ship("Patrol_Boat", Arrays.asList("C6", "C7"), gamePlayer7);
 			Ship ship16 =new Ship("Submarine", Arrays.asList("A2", "A3", "A4"), gamePlayer8);
-			Ship ship17 =new Ship("Patrol Boat", Arrays.asList("G6", "H6"), gamePlayer8);
+			Ship ship17 =new Ship("Patrol_Boat", Arrays.asList("G6", "H6"), gamePlayer8);
 			Ship ship18 =new Ship("Destroyer", Arrays.asList("B5", "C5", "D5"), gamePlayer9);
-			Ship ship19 =new Ship("Patrol Boat", Arrays.asList("C6", "C7"), gamePlayer9);
+			Ship ship19 =new Ship("Patrol_Boat", Arrays.asList("C6", "C7"), gamePlayer9);
 			Ship ship20 =new Ship("Submarine", Arrays.asList("H2", "H3", "H4"), gamePlayer10);
-			Ship ship21 =new Ship("Patrol Boat", Arrays.asList("H2", "H3", "H4"), gamePlayer10);
+			Ship ship21 =new Ship("Patrol_Boat", Arrays.asList("H2", "H3", "H4"), gamePlayer10);
 			Ship ship22 =new Ship("Destroyer", Arrays.asList("B5", "C5", "D5"), gamePlayer11);
-			Ship ship23 =new Ship("Patrol Boat", Arrays.asList("C6", "C7"), gamePlayer11);
+			Ship ship23 =new Ship("Patrol_Boat", Arrays.asList("C6", "C7"), gamePlayer11);
 			Ship ship24 =new Ship("Destroyer", Arrays.asList("B5", "C5", "D5"), gamePlayer13);
-			Ship ship25 =new Ship("Patrol Boat", Arrays.asList("C6", "C7"), gamePlayer13);
+			Ship ship25 =new Ship("Patrol_Boat", Arrays.asList("C6", "C7"), gamePlayer13);
 			Ship ship26 =new Ship("Submarine", Arrays.asList("A2", "A3", "A4"), gamePlayer14);
-			Ship ship27 =new Ship("Patrol Boat", Arrays.asList("G6", "H6"), gamePlayer14);
+			Ship ship27 =new Ship("Patrol_Boat", Arrays.asList("G6", "H6"), gamePlayer14);
 
 
 			//GAME 1

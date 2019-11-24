@@ -8,9 +8,15 @@
     <title>Ships locations!</title>
     <link rel="stylesheet" type="text/css" href="game.css">
 </head>
-<body>
-    <div id="container">
-        <h2 class="text-center">Game Board</h2>
+<body>  
+    <div class="container" id ="app">
+     <a class="nav-link d-inline" href="games.html">
+         <img src="Battleship_2.png" alt="battleshipLogo" id="battleship" >
+     </a>
+    </div>
+
+    <div id="container">    
+        <h2 class="text-center" id="title">Game Board</h2>
 
         <section id="tabla1">
         <span id="player1Info"></span>
@@ -146,8 +152,7 @@
         </table>
     </section>
   </div>
-
-
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" Vue.config.devtools = true></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="game.js"></script>

@@ -1,11 +1,10 @@
 package com.codeoftheweb.salvo;
 
-        import com.fasterxml.jackson.annotation.JsonIgnore;
-        import org.hibernate.annotations.GenericGenerator;
-
-        import javax.persistence.*;
-        import javax.persistence.FetchType;
-        import java.util.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.*;
+import javax.persistence.FetchType;
+import java.util.*;
 
 
 
@@ -27,6 +26,11 @@ public class Ship {
     private String shipType;
 
     public Ship() { }
+
+    public Ship(String shipType,List<String> locations) {
+        this.shipType = shipType;
+        this.locations = locations;
+    }
 
     public Ship(String shipType,List<String> locations, GamePlayer GP) {
         this.shipType = shipType;

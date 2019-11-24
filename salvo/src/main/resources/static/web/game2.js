@@ -1,3 +1,29 @@
+
+
+  var app = new Vue({
+      el:"#app",
+      data:{
+        vueGamePlayer: {}
+      }
+    })
+
+  Vue.config.devtools = true;
+
+
+ $.get("/api/game_view/"+getParameterByName('gp'))
+   .done(function(game) {
+   if (game.gameViewDTO.gamePlayers[0] == getParameterByName('gp')){
+   app.vueGamePlayer = game.gameViewDTO.gamePlayers[0];
+   }
+   else {
+   app.vueGamePlayer = game.gameViewDTO.gamePlayers[1];
+   }
+ })
+   .fail(function(jqXHR, textStatus) {
+   showOutput("Failed: " + textStatus);
+ });
+
+
 $(function() {
     loadData();
 });
@@ -12,43 +38,57 @@ function loadData(){
         .done(function(data) {
             console.log(data)
             let playerInfo;
-            if(data.gamePlayers[0].id == getParameterByName('gp')){
-                playerInfo1 = [data.gamePlayers[0].player.email,data.gamePlayers[1].player.email];
+            if (data.gameViewDTO.gamePlayers[1]!=null){
+                if(data.gameViewDTO.gamePlayers[0].id == getParameterByName('gp')){
+                    playerInfo = [data.gameViewDTO.gamePlayers[0],data.gameViewDTO.gamePlayers[1]];
+                }
+
+                else{
+                    playerInfo = [data.gameViewDTO.gamePlayers[1],data.gameViewDTO.gamePlayers[0]];
+                }
             }
 
             else{
-                playerInfo = [data.gamePlayers[1].player.email,data.gamePlayers[0].player.email];
+                playerInfo = [data.gameViewDTO.gamePlayers[0]];
             }
 
-            $('#player1Info').text(playerInfo[0] + '(you)');
-            $('#player2Info').text( playerInfo[1]);
 
-            data.ships.forEach(function (shipPiece) {
+            $('#player1Info').text( playerInfo[0].name + '(you)');
+            if (playerInfo[1]!=null){
+               $('#player2Info').text( playerInfo[1].name);
+            }
+            else {
+               $('#player2Info').text( "Waiting for player 2");
+            }
+
+            data.gameViewDTO.ships.forEach(function (shipPiece) {
                     shipPiece.locations.forEach(function (shipLocation) {
-                      let turnHitted = isHit(shipLocation,data.salvoes,playerInfo[0].id)
+                      let turnHitted = isHit(shipLocation,data.gameViewDTO.salvoes,playerInfo[0].id)
                       if(turnHitted >0){
-                        $('#' + shipLocation).addClass('ship-piece-hited');
-                        $('#' + shipLocation).text(turnHitted);
+                        $('#B_' + shipLocation).addClass('ship-piece-hitted');
+                        $('#B_' + shipLocation).text(turnHitted);
                       }
                       else
-                        $('#' + shipLocation).addClass('ship-piece');
+                        $('#B_' + shipLocation).addClass('ship-piece');
                     });
                   });
-                  data.salvoes.forEach(function (salvo) {
+                  data.gameViewDTO.salvoes.sort().forEach(function (salvo) {
                     console.log(salvo);
                     if (playerInfo[0].id === salvo.player) {
                       salvo.locations.forEach(function (location) {
-                        $('#' + location + "_2").addClass('salvo');
+                        $('#S_' + location ).addClass('salvo');
                       });
                     } else {
+
                       salvo.locations.forEach(function (location) {
-                        $('#' + location+ "_2").addClass('salvo');
+                        $('#_' + location).addClass('salvo');
                       });
                     }
                   });
         })
         .fail(function( jqXHR, textStatus ) {
-          alert( "Failed: " + textStatus );
+           window.location.href="http://localhost:8080/web/leaderboards.html";
+            alert( "Error: Wrong user // Not logged in")
         });
     }
 
@@ -63,3 +103,19 @@ function isHit(shipLocation,salvoes,playerId) {
   });
   return hit;
 }
+
+function placeShips(gpid) {
+     $.post({
+       url: "/games/players/"+ gpid +"/ships",
+       data: JSON.stringify({ "type": "destroyer", "locations": ["A1", "B1", "C1"]},{ "type": "patrol boat", "locations": ["H5", "H6"] }),
+       dataType: "text",
+       contentType: "application/json"
+     })
+     .done(function (response, status, jqXHR) {
+       alert( "Ships placed: " + response );
+     })
+     .fail(function (jqXHR, status, httpError) {
+       alert("Failed to place ships: " + textStatus + " " + httpError);
+     });
+
+   }
